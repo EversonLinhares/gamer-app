@@ -1,0 +1,117 @@
+<h1 class="mt-4">Players</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container-fluid">
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-md-2">
+            <button class="btn btn-success" style="width: 100px;" (click)="novoCadastro()">
+                <i class="fa fa-plus"></i>Novo
+            </button>
+        </div>
+    </div>
+    <form #consultaForm="ngForm" (submit)="pesquisar(nick)" >
+        <div class="row" *ngIf="(role != 'ROLE_USER')">
+            <div class="col-md-3">
+                <div class="form-group">
+                     <label>Nick :</label>
+                     <input type="text" class="form-control" 
+                     [(ngModel)]="nick" name="nick" >
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="(role != 'ROLE_USER')">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-light">
+                    <i class="fa fa-search"></i>Pesquisar
+                </button>
+            </div>
+        </div>
+    </form>
+   
+    <br/>
+    <!-- <table mat-table [dataSource]="players">
+        <ng-container matColumnDef="nick">
+            <th mat-header-cell *matHeaderCellDef> Nick </th>
+            <td mat-cell *matCellDef="let player"> {{ player.nick }} </td>
+          </ng-container>
+          <ng-container matColumnDef="level">
+            <th mat-header-cell *matHeaderCellDef> level </th>
+            <td mat-cell *matCellDef="let player"> {{ player.level }} </td>
+          </ng-container>
+          <ng-container matColumnDef="power">
+            <th mat-header-cell *matHeaderCellDef> power </th>
+            <td mat-cell *matCellDef="let player"> {{ player.power }} </td>
+          </ng-container>
+          <ng-container matColumnDef="codex">
+            <th mat-header-cell *matHeaderCellDef> codex </th>
+            <td mat-cell *matCellDef="let player"> {{ player.qtdCodex }} </td>
+          </ng-container>
+          <ng-container matColumnDef="cla">
+            <th mat-header-cell *matHeaderCellDef> cla </th>
+            <td mat-cell *matCellDef="let player"> {{ player.cla.name }} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+          <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+    </table> -->
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table table-striped table-dark table-hover ">
+                <thead>
+                    <tr class="bg-primary">
+                        <td style="font-weight: bold;">Nick</td>
+                        <td style="font-weight: bold;">Level</td>
+                        <td style="font-weight: bold;">Poder</td>
+                        <td style="font-weight: bold;">Codex</td>
+                        <td style="font-weight: bold;">Clã</td>
+                        <td style="font-weight: bold;">Classe</td>
+                        <td style="font-weight: bold;">Principal</td>
+                        <td style="font-weight: bold;">Alt</td>
+                        <td style="font-weight: bold;">Ativo</td>
+                        <td style="font-weight: bold;">Ações</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of players">
+                        <td>{{ player.nick }}</td>
+                        <td>{{ player.level }}</td>
+                        <td>{{ player.power }}</td>
+                        <td>{{ player.qtdCodex }}</td>
+                        <td>{{ player.guild.name }}</td>
+                        <td>{{ player.classe.name }}</td>
+                        <td>{{ player.principal==true ? 'Sim' : 'Não' }}</td>
+                        <td>{{ player.alt==true ? 'Sim' : 'Não' }}</td>
+                        <td>{{ player.ativo==true ? 'Sim' : 'Não' }}</td>
+                        <td>
+                           <button class="btn btn-primary" routerLink="/players/form/{{ player.id }}">
+                            <i class="fa fa-edit"></i>
+                           </button>
+                           <button class="btn btn-danger ml-4" (click)="abrirModal(player)"
+                           data-toggle="modal" data-target="#modalDelecao">
+                            <i class="fa fa-trash"></i>
+                           </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="modalDelecao" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Confirmação</h4>
+                </div>
+                <div class="modal-body" *ngIf="playerSelecionado">
+                   Confirma a deleção do(a) Player {{playerSelecionado.nick }}?
+                    
+                </div>
+                <div class="modal-footer">
+                      <button class="btn btn-success" (click)="deletarPlayer()" data-dismiss="modal">Confirmar</button>
+                      <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

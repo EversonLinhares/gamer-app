@@ -1,0 +1,118 @@
+<h1 class="mt-4">Players</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">{{ player.id ? 'Editar' : 'Cadastro'}}</li>
+</ol>
+<div class="container">
+    <form #playerForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success" role="alert" *ngIf="success == true">
+                        Player salvo/atualizado com sucesso!
+                      </div>
+                      <div class="alert alert-danger" role="alert" *ngFor="let erro of errors" >
+                        {{ erro }}
+                      </div>
+                </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-4">
+                <div class="form-group">
+                     <label>Nick: *</label>
+                     <input type="text" class="form-control" [(ngModel)]="player.nick" name="nick"  >
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Clã: *</label>
+                    <select class="form-control" 
+                    [ngModelOptions]="{standalone: true}" 
+                    [(ngModel)]="player.guild">
+                        <optgroup label="Selecione...">
+                            <option *ngFor="let guild of guilds" [ngValue]="guild.id">
+                                {{ guild.name }}
+                            </option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Classe: *</label>
+                    <select class="form-control" 
+                    [ngModelOptions]="{standalone: true}" 
+                    [(ngModel)]="player.classe">
+                        <optgroup label="Selecione...">
+                            <option *ngFor="let classe of classes" [ngValue]="classe.id" >
+                                {{ classe.name }}
+                            </option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                     <label>Level: *</label>
+                     <input type="number" class="form-control" [(ngModel)]="player.level" name="level" >
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                     <label>Power: *</label>
+                     <input type="number" class="form-control"[(ngModel)]="player.power" name="power"  >
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                     <label>Quantidade Codex: *</label>
+                     <input type="number" class="form-control" class="form-control"[(ngModel)]="player.qtdCodex" name="qtdCodex">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Principal: *</label>
+                    <select class="form-control" 
+                    [ngModelOptions]="{standalone: true}" 
+                    [(ngModel)]="player.principal">
+                        <optgroup label="Selecione...">
+                            <option *ngFor="let opcao of opcoes" [ngValue]="opcao.id">
+                                {{ opcao.descricao }}
+                            </option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Alt: *</label>
+                    <select class="form-control"
+                        [ngModelOptions]="{standalone: true}" 
+                        [(ngModel)]="player.alt" >
+                        <optgroup label="Selecione...">
+                            <option *ngFor="let opcao of opcoes" [ngValue]="opcao.id">
+                                {{ opcao.descricao}}
+                            </option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button class="btn btn-success" type="submit" *ngIf="!player.id">
+                    <i class="fa fa-save"></i> Salvar
+                </button>
+                <button class="btn btn-primary" type="submit" *ngIf="player.id">
+                    <i class="fa fa-refresh"></i>Atualizar
+                </button>
+                <button type="button" class="btn btn-danger ml-1" (click)="voltar()" >
+                    <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

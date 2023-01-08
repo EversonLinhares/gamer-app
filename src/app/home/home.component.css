@@ -1,0 +1,16 @@
+.d{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.i{
+    box-sizing: content-box;
+    box-shadow: 3px 3px 2px 2px black ;
+    border: 5px solid #6c788e;
+    border-radius: 20px;
+    background-image: url("./images/wp10242169.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}

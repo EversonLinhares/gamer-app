@@ -1,0 +1,100 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+                <div class="mb-md-1 mt-md-4 pb-5">
+                <h2 class="fw-bold mb-2 text-uppercase">
+                    {{ cadastrando ? 'Cadastro de novo usuario' : 'Login'}}</h2>
+                </div>
+                <div class="alert-danger form-group"  *ngFor="let erro of errors">
+                    {{ erro }}
+                </div>
+                <div class="alert-success form-group" *ngIf="msgSucesso">
+                    {{ msgSucesso }}
+                </div>
+                <form #loginForm="ngForm" (submit)="onSubmit();">
+                    <div class="form-group">
+                        <input type="text" name="username" 
+                        [(ngModel)]="username"
+                        class="form-control py-4" placeholder="Digite seu login" autocomplete="off">
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" name="password"
+                        [(ngModel)]="password"
+                        class="form-control py-4" placeholder="Digite sua senha">
+                    </div>
+
+                    <div class="form-group" *ngIf="cadastrando">
+                        <input type="email" name="email" 
+                        [(ngModel)]="email"
+                        class="form-control py-4" placeholder="Digite seu email">
+                    </div>
+
+                    <button class="btn btn-outline-light btn-lg px-5 d-flex" type="submit" *ngIf="!cadastrando">
+                        Entrar
+                    </button>
+                    <div class="d-flex">
+                        <button type="button" class="btn btn-outline-light btn-lg " *ngIf="cadastrando" (click)="cadastrar()">
+                            Cadastrar
+                        </button>
+    
+                        <button type="button" class="btn btn-outline-light btn-lg justify-content-end ml-3" (click)="cancelaCadastro()" *ngIf="cadastrando">
+                            Cancelar
+                        </button>
+                    </div>
+                    
+                </form>
+
+            </div>
+
+            <div class="card-footer text-center">
+                <div>
+                    <p class="mb-0">Não possui Usuário? 
+                        <a href="#" class="text-white-50 fw-bold" (click)="preparaCadastro($event)">
+                            Cadastre-se!
+                        </a>
+                    </p>
+                  </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- <div id="layoutAuthentication">
+    <div id="layoutAuthentication_content">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header">
+                                <h3 class="text-center font-weight-light my-4">
+                                    Entrar
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="alert-danger">
+                                    Login e/ou Senha incorreto(a).
+                                </div>
+
+                                <form #loginForm="ngForm" (submit)="onSubmit();">
+                                    <div class="form-group">
+                                        <label class="small mb-1">Login</label>
+                                        <input type="text" name="username" 
+                                        [(ngModel)]="username"
+                                        class="form-control py-4" placeholder="Digite seu login">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>  -->
