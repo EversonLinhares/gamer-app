@@ -47,5 +47,11 @@ export class PlayersService {
     return this.http.get<any>(url);
   }
 
+  deletePlayer(player: Player) : Observable<any> {
+    console.log("aqui id:" + player.id)
+    console.log(`${this.apiURL}/players/${player.id}`)
+    return this.http.delete<Player>(`${this.apiURL}/players/${player.id}`)
+  }
+
 
 }

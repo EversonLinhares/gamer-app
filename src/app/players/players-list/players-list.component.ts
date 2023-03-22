@@ -15,6 +15,8 @@ export class PlayersListComponent implements OnInit {
   playerSelecionado!: Player;
   nick:string = '';
   role:string = '';
+  msgSucesso!: string;
+  errors!: string[];
  /*  colunas = ['nick', 'level', 'power', 'qtdCodex', 'cl?a', 'classe'] */
 
   constructor(
@@ -52,8 +54,19 @@ export class PlayersListComponent implements OnInit {
     this.playerSelecionado = player;
   }
 
-  deletarPlayer(){
-
+  deletarPlayer(player: Player){
+    console.log(player)
+    return this.service.deletePlayer(player)
+    .subscribe(response => { 
+      this.msgSucesso = "Player Deletado com sucesso!"
+      this.players = response
+      setTimeout(() => {
+      this.ngOnInit()
+      this.msgSucesso = ""
+      },3000)
+      
+    });
+    
   }
 
   pesquisar(nick: string){

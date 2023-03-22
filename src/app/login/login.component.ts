@@ -32,6 +32,9 @@ export class LoginComponent  {
     }, errorResponse => {
       console.log(errorResponse)
       this.errors = ['Usuário e/ou senha incorreto(s).']
+      setTimeout(() =>{
+        this.errors = [];
+      },3000)
     })
   }
   
