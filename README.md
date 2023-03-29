@@ -19,7 +19,7 @@
 
 ## Imagens do projeto
 
-<img src="./images/login.png">
+<img src="./src/images/login.png">
 
 ## Observações
 
