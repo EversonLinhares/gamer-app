@@ -19,7 +19,32 @@
 
 ## Imagens do projeto
 
+<h4> Login: </h4>
 <img src="./src/images/login.png">
+
+<h4> Cadastro Usuario: </h4>
+<img src="./src/images/cadastroUsuario.png">
+
+<h4> Home: </h4>
+<img src="./src/images/home.png">
+
+<h4> Cadastro Player: </h4>
+<img src="./src/images/CadastroPlayer.png">
+
+<h4> Edição Player: </h4>
+<img src="./src/images/EdicaoPlayer.png">
+
+<h4> Exclusão Player: </h4>
+<img src="./src/images/ExclusaoPlayer.png">
+
+<h4> Listagem Player: </h4>
+<img src="./src/images/ListagemPlayer.png">
+
+<h4> Menu Usuario: </h4>
+<img src="./src/images/menuUser.png">
+
+<h4> Menu Admin: </h4>
+<img src="./src/images/menuAdmin.png">
 
 ## Observações
 
