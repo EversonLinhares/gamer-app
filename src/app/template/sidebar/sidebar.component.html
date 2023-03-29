@@ -26,6 +26,7 @@
                         <a class="nav-link" routerLink="/players/form">Cadastre-se</a>
                         <a class="nav-link" routerLink="/players/list">Listagem</a></nav>
                 </div>
+                <div *ngIf="(role != 'ROLE_USER')">
                 <a class="nav-link collapsed" href="#"
                 data-toggle="collapse" data-target="#collapseLayouts2" 
                 aria-expanded="false" aria-controls="collapseLayouts2">
@@ -42,7 +43,7 @@
                         <a class="nav-link" routerLink="#">Cadastro</a>
                         <a class="nav-link" routerLink="#">Listagem</a></nav>
                 </div>
-                <div *ngIf="(role != 'ROLE_USER')">
+                
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
                     ><div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     Geral

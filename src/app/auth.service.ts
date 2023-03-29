@@ -71,7 +71,6 @@ export class AuthService {
                             .set('username', username)
                             .set('password', password)
                             .set('grant_type', 'password')
-    console.log(params)
     const headers = {
       'Authorization': 'Basic ' + window.btoa(`${this.clientId}:${this.clientSecret}`),
       'Content-Type': 'application/x-www-form-urlencoded'

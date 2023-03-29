@@ -55,7 +55,6 @@ export class PlayersListComponent implements OnInit {
   }
 
   deletarPlayer(player: Player){
-    console.log(player)
     return this.service.deletePlayer(player)
     .subscribe(response => { 
       this.msgSucesso = "Player Deletado com sucesso!"
@@ -63,8 +62,13 @@ export class PlayersListComponent implements OnInit {
       setTimeout(() => {
       this.ngOnInit()
       this.msgSucesso = ""
+      this.errors = []
       },3000)
-      
+    }, errorResponse => {
+      this.errors = [errorResponse.error.errors]
+      setTimeout(() =>{
+        this.errors = [];
+      },3000)
     });
     
   }
