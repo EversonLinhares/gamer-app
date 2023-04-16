@@ -1,7 +1,7 @@
 export class Player {
     id!: number;
     nick!: string;
-    level!: number;
+    nivel!: number;
     power!: number;
     qtdCodex!: number;
     guild!: any;
